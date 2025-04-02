@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interest Calculator</title>
+    <style>
+        
+.interest-calculator {
+    width: 300px;
+    margin: 50px auto;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.interest-calculator form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.interest-calculator label {
+    margin-bottom: 10px;
+}
+
+.interest-calculator input[type="number"] {
+    width: 100%;
+    height: 30px;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+}
+
+.interest-calculator button {
+    width: 100%;
+    height: 30px;
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.interest-calculator button:hover {
+    background-color: #3e8e41;
+}
+
+#result {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="interest-calculator">
+        <h1>Interest Calculator</h1>
+        <form>
+            <label for="principal">Principal:</label>
+            <input type="number" id="principal" required>
+            <label for="rate">Rate (%):</label>
+            <input type="number" id="rate" required>
+            <label for="time">Time (years):</label>
+            <input type="number" id="time" required>
+            <button onclick="calculateInterest()">Calculate Interest</button>
+        </form>
+        <p id="result"></p>
+    </div>
+
+    <script >
+        
+
+
+function calculateInterest() {
+    const principal = parseFloat(document.getElementById("principal").value);
+    const rate = parseFloat(document.getElementById("rate").value) / 100;
+    const time = parseFloat(document.getElementById("time").value);
+
+    const simpleInterest = principal * rate * time;
+    const compoundInterest = principal * Math.pow((1 + rate), time) - principal;
+
+    document.getElementById("result").innerHTML = `Simple Interest: $${simpleInterest.toFixed(2)}<br>Compound Interest: $${compoundInterest.toFixed(2)}`;
+}
+
+    </script>
+</body>
+</html>
+
+
+
